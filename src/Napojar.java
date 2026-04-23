@@ -1,0 +1,53 @@
+public class Napojar extends Thread {
+
+
+    private Sklad_hotovo sklad_aktualne;
+    private Sklad sklad;
+    private Kasa kasa;
+
+
+    public void pridejPivo() {
+        if (sklad.getMaxPivo()<sklad_aktualne.getHotove_pivo()){
+            if (sklad.getLitry_piva() > 0 && sklad.getCistySklenice() > 0) {
+                sklad.minusLitry_piva();
+                sklad.minusCistySklenice();
+                sklad_aktualne.addpivo();
+            }
+        }
+    }
+
+    public void pridejLimonady(){
+        if (sklad.getMaxLimonada()<sklad_aktualne.getHotove_limonady()) {
+            if (sklad.getLitry_piva() > 0 && sklad.getCistySklenice() > 0) {
+                sklad.minusLitry_limonady();
+                sklad.minusCistySklenice();
+                sklad_aktualne.addlimonady();
+            }
+        }
+    }
+
+
+    public void vyrabej() throws InterruptedException {
+        if (sklad_aktualne.getHotove_pivo()>sklad_aktualne.getHotove_limonady()){
+            pridejPivo();
+        }
+        if (sklad_aktualne.getHotove_pivo()<sklad_aktualne.getHotove_limonady()) {
+            pridejLimonady();
+        }
+        else {
+            Thread.sleep(1000);
+        }
+    }
+
+    @Override
+    public void run() {
+        while (kasa.getPenize()<1000){
+            try {
+                vyrabej();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        System.out.println("konec");
+    }
+}
