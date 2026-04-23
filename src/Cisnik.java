@@ -7,6 +7,11 @@ public class Cisnik extends Thread{
     private Kasa kasa;
     private Random random;
 
+    public Cisnik(Kasa kasa, Sklad sklad, Sklad_hotovo sklad_aktualne) {
+        this.kasa = kasa;
+        this.sklad = sklad;
+        this.sklad_aktualne = sklad_aktualne;
+    }
 
     @Override
     public void run() {

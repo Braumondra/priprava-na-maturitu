@@ -4,6 +4,11 @@ public class Parkovac  extends Thread {
     private Sklad sklad;
     private Kasa kasa;
 
+    public Parkovac(Sklad_hotovo sklad_aktualne, Sklad sklad, Kasa kasa) {
+        this.sklad_aktualne = sklad_aktualne;
+        this.sklad = sklad;
+        this.kasa = kasa;
+    }
 
     public void pridejParek() throws InterruptedException {
         if (sklad_aktualne.getHotove_ParkyvRohliku()>0 && sklad_aktualne.getHotove_ParkyvRohliku()<3){

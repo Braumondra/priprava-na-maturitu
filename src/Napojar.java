@@ -5,6 +5,11 @@ public class Napojar extends Thread {
     private Sklad sklad;
     private Kasa kasa;
 
+    public Napojar(Sklad_hotovo sklad_aktualne, Sklad sklad, Kasa kasa) {
+        this.sklad_aktualne = sklad_aktualne;
+        this.sklad = sklad;
+        this.kasa = kasa;
+    }
 
     public void pridejPivo() {
         if (sklad.getMaxPivo()<sklad_aktualne.getHotove_pivo()){
