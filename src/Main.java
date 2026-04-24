@@ -10,12 +10,12 @@ void main() throws InterruptedException {
         Napojar napojar = new Napojar(skladHotovo,sklad,kasa);
         Napojar napojar2 = new Napojar(skladHotovo,sklad,kasa);
 
-        Cisnik cisnik = new Cisnik();
-        Cisnik cisnik2 = new Cisnik();
+        Cisnik cisnik = new Cisnik(kasa,sklad,skladHotovo);
+        Cisnik cisnik2 = new Cisnik(kasa,sklad,skladHotovo);
 
-        Parkovac parkovac = new Parkovac();
+        Parkovac parkovac = new Parkovac(skladHotovo,sklad,kasa);
 
-        Myc myc = new Myc();
+        Myc myc = new Myc(kasa,sklad,skladHotovo);
 
         napojar.start();
         napojar2.start();

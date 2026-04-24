@@ -44,6 +44,5 @@ public class Parkovac  extends Thread {
             }
         }
        }
-        System.out.println("konec");
     }
 }

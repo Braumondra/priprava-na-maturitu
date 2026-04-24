@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Napojar extends Thread {
 
 
@@ -12,31 +14,33 @@ public class Napojar extends Thread {
     }
 
     public void pridejPivo() {
-        if (sklad.getMaxPivo()<sklad_aktualne.getHotove_pivo()){
+        if (sklad.getMaxPivo()>sklad_aktualne.getHotove_pivo()){
             if (sklad.getLitry_piva() > 0 && sklad.getCistySklenice() > 0) {
                 sklad.minusLitry_piva();
                 sklad.minusCistySklenice();
                 sklad_aktualne.addpivo();
+                System.out.println("Udělal jsem pivo "+sklad_aktualne.getHotove_pivo());
             }
         }
     }
 
     public void pridejLimonady(){
-        if (sklad.getMaxLimonada()<sklad_aktualne.getHotove_limonady()) {
+        if (sklad.getMaxLimonada()>sklad_aktualne.getHotove_limonady()) {
             if (sklad.getLitry_piva() > 0 && sklad.getCistySklenice() > 0) {
                 sklad.minusLitry_limonady();
                 sklad.minusCistySklenice();
                 sklad_aktualne.addlimonady();
+                System.out.println("Udělal jsem limonady "+sklad_aktualne.getHotove_limonady());
             }
         }
     }
 
 
     public void vyrabej() throws InterruptedException {
-        if (sklad_aktualne.getHotove_pivo()>sklad_aktualne.getHotove_limonady()){
+        if (sklad_aktualne.getHotove_pivo()<=sklad_aktualne.getHotove_limonady()){
             pridejPivo();
         }
-        if (sklad_aktualne.getHotove_pivo()<sklad_aktualne.getHotove_limonady()) {
+        if (sklad_aktualne.getHotove_pivo()>=sklad_aktualne.getHotove_limonady()) {
             pridejLimonady();
         }
         else {
@@ -53,6 +57,5 @@ public class Napojar extends Thread {
                 throw new RuntimeException(e);
             }
         }
-        System.out.println("konec");
     }
 }

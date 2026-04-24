@@ -14,10 +14,6 @@ public class Sklad_hotovo {
         hotove_ParkyvRohliku++;
     }
 
-    public void addparkyvRohliku(){
-        hotove_ParkyvRohliku++;
-    }
-
 
 
     public synchronized void minusPivo(int pivo){
@@ -32,15 +28,15 @@ public class Sklad_hotovo {
 
 
 
-    public int getHotove_pivo() {
+    public synchronized int getHotove_pivo() {
         return hotove_pivo;
     }
 
-    public int getHotove_limonady() {
+    public synchronized int getHotove_limonady() {
         return hotove_limonady;
     }
 
-    public int getHotove_ParkyvRohliku() {
+    public synchronized int getHotove_ParkyvRohliku() {
         return hotove_ParkyvRohliku;
     }
 }
