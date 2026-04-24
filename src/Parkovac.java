@@ -1,11 +1,17 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Parkovac  extends Thread {
+    private static final Logger log = LoggerFactory.getLogger(Parkovac.class);
+
 
     private Sklad_hotovo sklad_aktualne;
     private Sklad sklad;
     private Kasa kasa;
 
-    public Parkovac(Sklad_hotovo sklad_aktualne, Sklad sklad, Kasa kasa) {
+    public Parkovac(Sklad_hotovo sklad_aktualne, Sklad sklad, Kasa kasa,String jmeno) {
         this.sklad_aktualne = sklad_aktualne;
+        super(jmeno);
         this.sklad = sklad;
         this.kasa = kasa;
     }
@@ -16,6 +22,7 @@ public class Parkovac  extends Thread {
                 sklad.minusParky();
                 sklad.minusRohliku();
                 sklad_aktualne.addParkyvRohliku();
+                log.info("Hotovej párek");
             }
         }
         else {
@@ -26,7 +33,7 @@ public class Parkovac  extends Thread {
 
     @Override
     public void run() {
-        while (kasa.getPenize()<1000){
+        while (kasa.getPenize()<1000&&!sklad.isDest()){
         if (!(sklad.getParky()<0 || sklad.getRohlik()<0)){
             try {
                 pridejParek();
@@ -39,6 +46,7 @@ public class Parkovac  extends Thread {
                 Thread.sleep(5000);
                 sklad.addparky(10);
                 sklad.addrohlik(10);
+                log.info("Pridali jsme na 10 párků a rohlíků");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
