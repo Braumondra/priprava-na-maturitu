@@ -12,8 +12,6 @@ public class Sklad {
     private Double litry_limonady=500.0;
     private int cistySklenice=20;
     private int cistySkleniceMAX=20;
-    private Sklad_hotovo sklad=new Sklad_hotovo();;
-    private Kasa kasa=new Kasa();
     private int spinavy=20;
 
 
@@ -231,22 +229,4 @@ public class Sklad {
 
 
 
-    public void statistika(){
-        kasaTed=kasa.getPenize();
-        log.info("Bylo vyrobeno piv {}",getParkyVyrobenno());
-        log.info("Bylo prodáno piv {}",getPivoSell());
-        log.info("Bylo vyrobeno  limonády {}",getLimonadaVYrobenno());
-        log.info("Bylo prodáno limonády {}",getLimonadaSell());
-        log.info("Bylo vyrobeno parků v rohlíku{}",getParkyVyrobenno());
-        log.info("Bylo prodáno párků v rohlíku {}",getParkySell());
-        log.info("Zůstalo párků {}",getParky());
-        log.info("Zůstalo rohlíků {}",getRohlik());
-        log.info("Zůstalo litrů piva {}", getLitry_piva());
-        log.info("Zůstalo litrů limonády {}", getLitry_limonady());
-        log.info("Zůstalo čistých sklenic {}", getCistySklenice());
-        log.info("Aktualní stav kasičky {}",getKasaTed());
-        log.info("Vybráno {}",kasa.getVybrano());
-        log.info("Ukradeno {}",kasa.getUkradeno());
-
-    }
 }

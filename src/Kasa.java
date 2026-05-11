@@ -45,7 +45,7 @@ public class Kasa {
     }
 
     public void ukradnul() {
-        ukradeno=penize;
+        ukradeno+=penize;
         penize=0;
 
     }
@@ -55,6 +55,10 @@ public class Kasa {
 
     public int getVybrano() {
         return vybrano;
+    }
+
+    public int getUkradeno() {
+        return ukradeno;
     }
 
     public synchronized int getPenize() {

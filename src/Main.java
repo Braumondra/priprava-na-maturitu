@@ -36,8 +36,25 @@ public class Main {
         myc.join();
         parkovac.join();
 
+
+
+        int kasaTed=kasa.getPenize();
+        log.info("Bylo vyrobeno piv {}",sklad.getParkyVyrobenno());
+        log.info("Bylo prodáno piv {}",sklad.getPivoSell());
+        log.info("Bylo vyrobeno  limonády {}",sklad.getLimonadaVYrobenno());
+        log.info("Bylo prodáno limonády {}",sklad.getLimonadaSell());
+        log.info("Bylo vyrobeno parků v rohlíku{}",sklad.getParkyVyrobenno());
+        log.info("Bylo prodáno párků v rohlíku {}",sklad.getParkySell());
+        log.info("Zůstalo párků {}",sklad.getParky());
+        log.info("Zůstalo rohlíků {}",sklad.getRohlik());
+        log.info("Zůstalo litrů piva {}", sklad.getLitry_piva());
+        log.info("Zůstalo litrů limonády {}", sklad.getLitry_limonady());
+        log.info("Zůstalo čistých sklenic {}", sklad.getCistySklenice());
+        log.info("Aktualní stav kasičky {}",kasaTed);
+        log.info("Vybráno {}",kasa.getVybrano());
+        log.info("Ukradeno {}",kasa.getUkradeno());
         System.out.println("konec");
-        sklad.statistika();
+
 
     }
 }
